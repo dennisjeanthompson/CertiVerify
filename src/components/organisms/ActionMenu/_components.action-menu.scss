@@ -1,9 +1,11 @@
 .buv-c-action-menu {
   display: flex;
   align-items: center;
+  gap: 12px;
   padding: 0;
+  margin: 16px 0;
 }
 
 .buv-c-action-menu-item {
-  flex-basis: 30px;
+  flex-basis: auto;
 }

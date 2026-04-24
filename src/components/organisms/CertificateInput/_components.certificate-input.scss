@@ -2,21 +2,27 @@
 
 .buv-c-certificate-input {
   display: flex;
+  gap: 16px;
   width: 100%;
-  padding: 40px 30px;
-  background-color: rgb(255 255 255 / 10%);
-  border: 1px solid $footerBackground;
+  padding: 32px;
+  background: linear-gradient(135deg, #e6f0ff 0%, #f0f4ff 100%);
+  border: 2px dashed #0066cc;
+  border-radius: 8px;
   box-sizing: border-box;
+  transition: all 0.3s ease;
 
   @media only screen and (width <= 600px) {
     flex-direction: column;
-    grid-row-gap: 10px; // potentially useless since we are playing on the padding and height, but keeping for intent and future support
-    height: 162px;
-    padding: 30px;
-    justify-content: space-between;
+    padding: 24px;
+    min-height: auto;
   }
 }
 
+.buv-c-certificate-input:hover {
+  border-color: #0052a3;
+  background: linear-gradient(135deg, #d6e5ff 0%, #e0e8ff 100%);
+}
+
 .buv-c-certificate-input__input {
-  width: 100%;
+  flex: 1;
 }

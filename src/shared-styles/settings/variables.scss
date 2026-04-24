@@ -1,10 +1,21 @@
-$successColor: rgb(42 178 123 / 100%);
-$successBackgroundColor: #e9f7f1; // same RGB 10% opacity
-$errorColor: rgb(208 2 27 / 100%);
-$errorBackgroundColor: #fae5e7; // same RGB 10% opacity
+// Modern Professional Color Palette
+$primaryColor: #0066cc; // Modern blue
+$primaryLightColor: #e6f0ff; // Light blue for backgrounds
+$secondaryColor: #00a86b; // Professional green
+$successColor: #10b981; // Modern success green
+$successBackgroundColor: #ecfdf5; // Light green background
+$errorColor: #dc2626; // Modern error red
+$errorBackgroundColor: #fee2e2; // Light red background
+$warningColor: #ea580c; // Modern warning orange
+$warningBackgroundColor: #fef3c7; // Light orange background
 $testColor: rgb(245 166 35);
 $testBackgroundColor: #fef6e8; // same RGB 10% opacity
-$fontColor: rgb(3 21 50 / 100%);
+$fontColor: #1f2937; // Darker, more professional text
+$fontColorSecondary: #6b7280; // Secondary text color
+$borderColor: #e5e7eb; // Light gray borders
+$backgroundColor: #f9fafb; // Subtle background
+$surfaceColor: #ffffff; // White surfaces
+$shadowColor: rgba(0, 0, 0, 0.08); // Subtle shadow
 $modalMaxDimension: 600px;
-$footerBackground: rgb(0 0 0 / 10%);
+$footerBackground: #f3f4f6; // Professional footer background
 $breakpoint: 750px;

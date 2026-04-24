@@ -5,42 +5,65 @@
 .buv-c-card {
   position: relative;
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.buv-c-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
 }
 
 .buv-c-card__img-wrapper {
-  margin-right: 1.5vw;
-  min-width: 50px;
-  width: 20%;
+  margin-right: 24px;
+  min-width: 80px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e6f0ff 0%, #f0f4ff 100%);
+  border-radius: 8px;
+  padding: 12px;
 }
 
 .buv-c-card__img {
   max-width: 100%;
   max-height: 100%;
+  width: 60px;
+  height: 60px;
 }
 
 .buv-c-card__title-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
 }
 
 .buv-c-card__download-button {
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 .buv-c-card__title {
-  font-size: calc(16px + 0.5vw);
+  font-size: 18px;
   margin-top: 0;
   margin-bottom: 0;
-  font-weight: 400;
-  padding-right: 100px;
+  font-weight: 700;
+  color: #1f2937;
+  padding-right: 0;
+  letter-spacing: -0.3px;
 }
 
 .buv-c-card__description {
-  font-size: 12px;
-  margin: 5px 0 0;
+  font-size: 13px;
+  margin: 8px 0 0;
   font-weight: 400;
+  color: #6b7280;
 }
 
 .buv-c-card__title--no-padding {
@@ -49,14 +72,26 @@
 
 .buv-c-card__recipient {
   font-weight: 600;
-  margin: 6px 0 12px;
+  margin: 12px 0 16px;
+  color: #0066cc;
+  font-size: 14px;
 }
 
 .buv-c-card__record-link {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 24px;
+  right: 24px;
   line-height: 30px;
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.buv-c-card__record-link:hover {
+  color: #0052a3;
+  text-decoration: underline;
 }
 
 .buv-c-card__record-link::after {
@@ -68,7 +103,7 @@
   transform: rotate(-45deg);
   font-weight: bold;
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 
 .buv-c-card__verify-button {

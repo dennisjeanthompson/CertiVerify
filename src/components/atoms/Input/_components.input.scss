@@ -3,22 +3,34 @@
 
 .buv-c-input {
   font-size: 15px;
-  color: variables.$fontColor;
-  border-radius: 2px 0 0 2px;
-  padding: 12px 15px;
-  background-color: rgb(243 244 245 / 600%);
-  border: solid 1px rgb(3 21 50 / 13%);
+  color: #1f2937;
+  border-radius: 6px 0 0 6px;
+  padding: 12px 14px;
+  background-color: #ffffff;
+  border: solid 1px #d1d5db;
   box-sizing: border-box;
   width: 100%;
+  transition: all 0.2s ease;
+}
+
+.buv-c-input:hover:not(:disabled) {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+.buv-c-input:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+  background-color: #ffffff;
 }
 
 .buv-c-input.is-invalid {
-  border: 2px solid #f00;
+  border: 2px solid #dc2626;
 }
 
 .buv-c-input::placeholder {
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: rgb(3 21 50 / 30%);
+  color: #9ca3af;
   letter-spacing: -.25px;
 }
 

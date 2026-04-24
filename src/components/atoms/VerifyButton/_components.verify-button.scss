@@ -1,19 +1,31 @@
 @use '../../../shared-styles/settings/variables';
 
-$mainColor: #2ab27b;
-$secondaryColor: #fff;
-
 .buv-c-verify-button {
-  background-color: $mainColor;
-  border-radius: 0 2px 2px 0;
-  color: $secondaryColor;
+  background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+  border-radius: 8px;
+  color: #ffffff;
   cursor: pointer;
   display: block;
-  font-size: 15px;
-  font-weight: 400;
-  padding: 12px 38px;
-  border: 1px solid $mainColor;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border: none;
   width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.15);
+  text-transform: none;
+  letter-spacing: 0.4px;
+}
+
+.buv-c-verify-button:hover:not(.is-disabled) {
+  background: linear-gradient(135deg, #0052a3 0%, #003d7a 100%);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+  transform: translateY(-2px);
+}
+
+.buv-c-verify-button:active:not(.is-disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 102, 204, 0.15);
 }
 
 .buv-c-verify-button__label {
@@ -21,24 +33,43 @@ $secondaryColor: #fff;
 }
 
 .buv-c-verify-button--hollow {
-  background: $secondaryColor;
-  color: $mainColor;
-  font-weight: 100;
-  text-transform: uppercase;
-  padding: 12px 30px;
-  font-size: 13px;
+  background: transparent;
+  color: #0066cc;
+  font-weight: 600;
+  text-transform: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  border: 2px solid #0066cc;
+  box-shadow: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.buv-c-verify-button--hollow:hover:not(.is-disabled) {
+  background: #e6f0ff;
+  border-color: #0052a3;
+  color: #0052a3;
 }
 
 .buv-c-verify-button--link {
   background: none;
-  color: variables.$fontColor;
+  color: #0066cc;
   border: 0;
-  text-decoration: underline;
+  text-decoration: none;
   padding: 0;
-  margin-top: 5px;
-  font-size: 13px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: none;
+  transition: color 0.2s ease;
+}
+
+.buv-c-verify-button--link:hover:not(.is-disabled) {
+  color: #0052a3;
+  text-decoration: underline;
 }
 
 .buv-c-verify-button.is-disabled {
   pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
