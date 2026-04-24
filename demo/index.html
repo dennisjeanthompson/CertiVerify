@@ -3,183 +3,80 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>CertiVerify Demo Explorer</title>
+    <title>CertiVerify</title>
+    
+    <script src="./@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="./index.js"></script>
+
+    <script>
+      // HACK(keanulee): The Redux package assumes `process` exists - mock it here before the module is loaded.
+      window.process = { env: { NODE_ENV: 'development' } };
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
       :root {
-        --primary: #4F46E5;
         --bg-color: #0F172A;
-        --card-bg: rgba(30, 41, 59, 0.6);
+        --card-bg: rgba(30, 41, 59, 0.8);
         --text-main: #F8FAFC;
-        --text-muted: #94A3B8;
-        --border-color: rgba(255, 255, 255, 0.08);
+        --border-color: rgba(255, 255, 255, 0.1);
       }
       body {
         margin: 0;
         font-family: 'Inter', sans-serif;
         background: var(--bg-color);
         background-image: 
-          radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.25) 0px, transparent 50%),
-          radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.15) 0px, transparent 50%);
+          radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+          radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.1) 0px, transparent 50%);
         background-attachment: fixed;
         color: var(--text-main);
         min-height: 100vh;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         padding: 50px 20px;
         box-sizing: border-box;
       }
-      .container {
-        max-width: 1000px;
-        width: 100%;
-        background: var(--card-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid var(--border-color);
-        border-radius: 24px;
-        padding: 50px 60px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      }
       .header {
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
       }
-      h1.main-title {
+      h1 {
         font-size: 3rem;
         font-weight: 800;
-        margin: 0 0 15px 0;
-        background: linear-gradient(135deg, #60A5FA, #A78BFA, #F472B6);
+        margin: 0;
+        background: linear-gradient(135deg, #60A5FA, #A78BFA);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         letter-spacing: -1px;
       }
-      .header p {
-        color: var(--text-muted);
-        font-size: 1.2rem;
-        margin: 0;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 30px;
-      }
-      section {
-        background: rgba(255, 255, 255, 0.02);
+      .verifier-container {
+        width: 100%;
+        max-width: 800px;
+        background: var(--card-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border: 1px solid var(--border-color);
         border-radius: 16px;
-        padding: 30px;
-        transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-      }
-      section:hover {
-        transform: translateY(-5px);
-        border-color: rgba(255, 255, 255, 0.15);
-        background: rgba(255, 255, 255, 0.04);
-      }
-      section h2 {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin: 0 0 25px 0;
-        color: #E2E8F0;
-        padding-bottom: 15px;
-        border-bottom: 1px solid var(--border-color);
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      li a {
-        color: #93C5FD;
-        text-decoration: none;
-        font-size: 0.95rem;
-        display: flex;
-        align-items: center;
-        transition: all 0.2s ease;
-        padding: 10px 15px;
-        border-radius: 10px;
-        background: rgba(147, 197, 253, 0.05);
-        width: 100%;
-        box-sizing: border-box;
-      }
-      li a:hover {
-        color: #FFFFFF;
-        background: var(--primary);
-        transform: translateX(8px);
-        box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
-      }
-      li a::before {
-        content: '→';
-        margin-right: 12px;
-        opacity: 0.5;
-        transition: opacity 0.2s, transform 0.2s;
-      }
-      li a:hover::before {
-        opacity: 1;
-        transform: translateX(3px);
+        padding: 40px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       }
       @media (max-width: 768px) {
-        .container {
-            padding: 30px 20px;
+        .verifier-container {
+            padding: 20px;
         }
-        h1.main-title {
+        h1 {
             font-size: 2.2rem;
         }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="header">
-        <h1 class="main-title">CertiVerify Explorer</h1>
-        <p>Interactive playground for the universal blockcerts verifier</p>
-      </div>
-      
-      <div class="grid">
-        <section>
-            <h2>Classic Usage</h2>
-            <ul>
-                <li><a href="./no-api.html">No API usage</a></li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Component API</h2>
-            <ul>
-                <li><a href="./with-api-certificate.html">Certificate passed directly</a></li>
-                <li><a href="./disable-verify-flag.html">Disabling verification</a></li>
-                <li><a href="./disable-auto-verify-flag.html">Disabling auto verification</a></li>
-                <li><a href="./allow-download-flag.html">Allowing download</a></li>
-                <li><a href="./disable-download-pdf-flag.html">Disabling PDF download</a></li>
-                <li><a href="./allow-social-share-flag.html">Allowing social sharing</a></li>
-                <li><a href="./display-mode-card.html">Card display mode</a></li>
-                <li><a href="./display-mode-full.html">Full display mode</a></li>
-                <li><a href="./display-mode-fullscreen.html">Fullscreen display mode</a></li>
-                <li><a href="./show-metadata.html">Showing metadata</a></li>
-                <li><a href="./explorer-api.html">Explorer API</a></li>
-                <li><a href="./explorer-api-overwrite-default.html">Explorer API overwrite</a></li>
-                <li><a href="./src-as-json-string.html">Certificate as JSON string</a></li>
-                <li><a href="./did-resolver-url.html">DID resolver URL</a></li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Event API</h2>
-            <ul>
-                <li><a href="events.html">Events examples</a></li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Theming</h2>
-            <ul>
-                <li><a href="dark-theme.html">Dark environment</a></li>
-                <li><a href="bright-theme.html">Bright environment</a></li>
-            </ul>
-        </section>
-      </div>
+    <div class="header">
+      <h1>CertiVerify</h1>
+    </div>
+    <div class="verifier-container">
+      <blockcerts-verifier theme="dark"></blockcerts-verifier>
     </div>
   </body>
 </html>
