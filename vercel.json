@@ -4,7 +4,8 @@
   "framework": "other",
   "nodeVersion": "20.x",
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
   },
-  "installCommand": "npm ci --prefer-offline --no-audit"
+  "installCommand": "npm ci --legacy-peer-deps --prefer-offline --no-audit"
 }
