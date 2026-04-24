@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "outputDirectory": ".",
   "env": {
     "NODE_ENV": "production",
     "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
